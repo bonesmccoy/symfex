@@ -1,0 +1,4 @@
+bones_core:
+    resource: "@BonesCoreBundle/Resources/config/routing.yml"
+    prefix:   /
+
