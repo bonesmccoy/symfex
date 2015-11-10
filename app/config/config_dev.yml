@@ -29,18 +29,6 @@ monolog:
         #    type:   chromephp
         #    level:  info
 
-propel:
-    path: %kernel.root_dir%/../vendor/propel"
-    phing_path: "%kernel.root_dir%/../vendor/phing"
-    dbal:
-        default_connection:  bones
-        connections:
-            bones:
-                driver:               %database_driver%
-                user:                 %database_user%
-                password:             %database_password%
-                dsn:                  %database_driver%:host=%database_host%;dbname=%database_name%;charset=UTF8
-
 assetic:
     use_controller: "%use_assetic_controller%"
 

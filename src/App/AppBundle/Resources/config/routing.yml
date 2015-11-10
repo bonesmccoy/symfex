@@ -1,0 +1,8 @@
+
+login_index:
+    path:     /login
+    defaults: { _controller: AppAppBundle:Login:index }
+
+login_process:
+    path:     /process
+    defaults: { _controller: AppAppBundle:Login:process }
