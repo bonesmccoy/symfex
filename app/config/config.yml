@@ -4,7 +4,7 @@ imports:
 
 framework:
     #esi:             ~
-    #translator:      { fallback: "%locale%" }
+    translator:      ~
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -57,19 +57,13 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
 propel:
-    database:
-        connections:
-            default:
-                adapter:              %database_driver%
-                user:                 %database_user%
-                password:             %database_password%
-                dsn:                  %database_driver%:host=%database_host%;dbname=%database_name%;charset=UTF8
-    runtime:
-        defaultConnection: default
-        connections:       [ default]
-    generator:
-        defaultConnection: default
-        connections:       [default]
+    dbal:
+        driver:               %database_driver%
+        user:                 %database_user%
+        password:             %database_password%
+        dsn:                  %database_driver%:host=%database_host%;dbname=%database_name%;charset=UTF8
+    behaviors:
+            typehintable: \TypehintableBehavior
 
 # Swiftmailer Configuration
 swiftmailer:
