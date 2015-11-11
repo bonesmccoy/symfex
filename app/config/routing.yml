@@ -1,5 +1,6 @@
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+    prefix: /user
 
 app_app:
     resource: "@AppAppBundle/Resources/config/routing.yml"
