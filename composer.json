@@ -21,7 +21,8 @@
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "willdurand/propel-typehintable-behavior": "^1.0",
         "symfony/propel1-bridge": "^2.6",
-        "ircmaxell/password-compat": "^1.0"
+        "ircmaxell/password-compat": "^1.0",
+        "twbs/bootstrap": "^3.3"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

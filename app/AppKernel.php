@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new Propel\PropelBundle\PropelBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Bones\CoreBundle\BonesCoreBundle(),
+            new Bones\UserBundle\BonesUserBundle(),
             new App\AppBundle\AppAppBundle(),
         );
 

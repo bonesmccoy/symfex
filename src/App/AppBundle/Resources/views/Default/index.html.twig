@@ -1,3 +1,7 @@
-{% if user %}
-  {{  dump(user) }}
-{% endif %}
+{% extends 'AppAppBundle::layout.html.twig' %}
+
+{% block body %}
+    {% if user %}
+      {{  dump(user) }}
+    {% endif %}
+{% endblock %}
