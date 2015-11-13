@@ -2,10 +2,10 @@ app_default:
     path:     /
     defaults: { _controller: AppAppBundle:Default:index}
 
-login_index:
-    path:     /login
-    defaults: { _controller: AppAppBundle:Login:index }
+app_create:
+    path: /create
+    defaults: { _controller: AppAppBundle:Default:create}
 
-login_process:
-    path:     /process
-    defaults: { _controller: AppAppBundle:Login:process }
+app_show:
+    path: /show
+    defaults: { _controller: AppAppBundle:Default:show}

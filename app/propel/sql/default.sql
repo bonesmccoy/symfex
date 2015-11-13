@@ -4,6 +4,21 @@
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ---------------------------------------------------------------------
+-- bones_article
+-- ---------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `bones_article`;
+
+CREATE TABLE `bones_article`
+(
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `title` VARCHAR(255),
+    `content` TEXT,
+    `meta_columns` TEXT,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB;
+
+-- ---------------------------------------------------------------------
 -- fos_user
 -- ---------------------------------------------------------------------
 
