@@ -19,6 +19,7 @@
             padding-top: 70px;
             /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
         }
+
         {% block stylesheets %}{% endblock %}
     </style>
 
@@ -38,7 +39,8 @@
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -58,6 +60,28 @@
                 <li>
                     <a href="#">Contact</a>
                 </li>
+
+            </ul>
+            <ul class="pull-right nav navbar-nav">
+
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    <li><a>{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} </a></li>
+                    <li>
+                    <a href="{{ path('fos_user_security_logout') }}">
+                        {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                    </a>
+                    </li>
+                {% else %}
+                    <li>
+
+                        <a href="{{ path('register_buyer') }}"> {{ 'Sign up'| trans }}</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                    </li>
+                {% endif %}
+
+
             </ul>
         </div>
         <!-- /.navbar-collapse -->

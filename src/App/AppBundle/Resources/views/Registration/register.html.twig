@@ -1,13 +1,36 @@
 {% extends 'AppLayoutBundle::layout.html.twig' %}
+{% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}
 
 {% block title %}Register{% endblock %}
 
 {% block body %}
-
-<form name="{{ form.vars.name }}" class="{{ form.vars.name }}" method="POST" action="{{ path('fos_user_registration_register') }}" >
-    {{ form_widget(form) }}
-    <div>
-        <input type="submit" class="btn btn-primary" value="submit"/>
+    {% if form.vars.name == constant('\\Bones\\UserBundle\\Form\\Registration\\SellerRegistrationType::NAME') %}
+        {% set title ='Registering as Seller' %}
+        {% set otherType = 'Buyer' %}
+        {% set otherRoute = 'register_buyer' %}
+    {% else %}
+        {% set title = 'Registering as Buyer' %}
+        {% set otherType = 'Seller' %}
+        {% set otherRoute = 'register_seller' %}
+    {% endif %}
+    <div class="row-fluid">
+        <div class="span-12">
+            <h1>{{ title }}</h1>
+        </div>
     </div>
-    </form>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <form name="{{ form.vars.name }}" class="{{ form.vars.name }}" method="POST" action="{{ path('fos_user_registration_register') }}">
+                {{ form_widget(form) }}
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="submit" class="btn btn-primary pull-right" value="submit"/>
+                    </div>
+                </div>
+
+            </form>
+            <div> Wrong user? <a href="{{ path(otherRoute) }}">Register as {{ otherType }}</a></div>
+        </div>
+    </div>
+
 {% endblock %}
