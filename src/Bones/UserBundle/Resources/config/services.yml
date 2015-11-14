@@ -1,0 +1,10 @@
+services:
+    bones.form.registration.buyer:
+        class: Bones\UserBundle\Form\Registration\BuyerRegistrationType
+        tags:
+            - { name: form.type, alias: bones_user_registration_buyer }
+
+    bones.form.registration.seller:
+        class: Bones\UserBundle\Form\Registration\SellerRegistrationType
+        tags:
+            - { name: form.type, alias: bones_user_registration_seller }

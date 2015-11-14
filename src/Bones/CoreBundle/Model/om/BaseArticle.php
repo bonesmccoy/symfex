@@ -942,7 +942,7 @@ abstract class BaseArticle extends BaseObject implements Persistent
     }
 
     // MetaColumns behavior
-
+    
     public function __call($name, $params)
     {
         //get
@@ -951,10 +951,10 @@ abstract class BaseArticle extends BaseObject implements Persistent
         if (preg_match($get_reg, $name, $matches)) {
             $key = $matches[1] ;
             $key = strtolower(preg_replace( '/([A-Z])/', '_$1', lcfirst( $key )));
-            $meta = json_decode($this->getMetaColumns(),1);
+            $meta = json_decode($this->getMetaColumns());
             return isset($meta[$key]) ? $meta[$key] : null;
         }
-
+    
         //set
         $set_reg = '/^set([A-Za-z0-9]+)Meta/';
         $matches = array();
@@ -962,7 +962,7 @@ abstract class BaseArticle extends BaseObject implements Persistent
             if (empty($params)) throw new PropelException("params must valid, if setter");
             $key = $matches[1] ;
             $key = strtolower(preg_replace( '/([A-Z])/', '_$1', lcfirst( $key )));
-            $meta = json_decode($this->getMetaColumns(),1);
+            $meta = json_decode($this->getMetaColumns());
             $meta[$key] = $params[0];
             $this->setMetaColumns(json_encode($meta));
             return $this;
