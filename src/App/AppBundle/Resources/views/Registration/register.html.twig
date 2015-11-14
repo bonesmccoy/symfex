@@ -1,0 +1,13 @@
+{% extends 'AppLayoutBundle::layout.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+
+<form name="{{ form.vars.name }}" class="{{ form.vars.name }}" method="POST" action="{{ path('fos_user_registration_register') }}" >
+    {{ form_widget(form) }}
+    <div>
+        <input type="submit" class="btn btn-primary" value="submit"/>
+    </div>
+    </form>
+{% endblock %}

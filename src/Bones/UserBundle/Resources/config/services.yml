@@ -8,3 +8,8 @@ services:
         class: Bones\UserBundle\Form\Registration\SellerRegistrationType
         tags:
             - { name: form.type, alias: bones_user_registration_seller }
+
+    bones.form.listener.registration_success:
+        class: Bones\UserBundle\Listeners\RegistrationSuccessListener
+        tags:
+            - { name: kernel.event_subscriber }

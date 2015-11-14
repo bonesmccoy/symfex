@@ -9,3 +9,11 @@ app_create:
 app_show:
     path: /show
     defaults: { _controller: AppAppBundle:Default:show}
+
+register_buyer:
+    path:     /account/buyer
+    defaults: { _controller: AppAppBundle:Registration:registerBuyer }
+
+register_seller:
+    path:     /account/seller
+    defaults: { _controller: AppAppBundle:Registration:registerSeller }
