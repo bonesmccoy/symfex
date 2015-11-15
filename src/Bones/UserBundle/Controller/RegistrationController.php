@@ -17,9 +17,6 @@ class RegistrationController extends BaseController
 {
     public function registerAction(Request $request)
     {
-        /** @var $formFactory \FOS\UserBundle\Form\Factory\FactoryInterface */
-        $formFactory = $this->get('fos_user.registration.form.factory');
-        /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */
         $userManager = $this->get('fos_user.user_manager');
         /** @var $dispatcher \Symfony\Component\EventDispatcher\EventDispatcherInterface */
         $dispatcher = $this->get('event_dispatcher');
@@ -34,15 +31,7 @@ class RegistrationController extends BaseController
             return $event->getResponse();
         }
 
-        $form = $formFactory->createForm();
-        if ($request->request->has('bones_user_registration_seller') ) {
-            $form = $this->createForm(new SellerRegistrationType());
-        } elseif ($request->request->has('bones_user_registration_buyer')) {
-            $form = $this->createForm(new BuyerRegistrationType());
-        } else {
-            throw new \Exception("INVALID USER TYPE");
-        }
-
+        $form = $this->buildForm($request);
         $form->setData($user);
 
         $form->handleRequest($request);
@@ -66,5 +55,24 @@ class RegistrationController extends BaseController
         return $this->render('FOSUserBundle:Registration:register.html.twig', array(
             'form' => $form->createView(),
         ));
+    }
+
+    /**
+     * @param Request $request
+     * @throws \Exception
+     */
+    private function buildForm(Request $request)
+    {
+        $bonesUserConfig = $this->container->getParameter('bones_user');
+
+        if (isset($bonesUserConfig['form_types'])) {
+            foreach($bonesUserConfig['form_types'] as $formName => $className) {
+                if ($request->request->has($formName)) {
+                    return $this->createForm(new $className());
+                }
+            }
+        }
+
+        throw new \Exception("INVALID USER TYPE");
     }
 }
