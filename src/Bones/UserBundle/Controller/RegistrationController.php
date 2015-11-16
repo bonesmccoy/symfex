@@ -66,9 +66,11 @@ class RegistrationController extends BaseController
         $bonesUserConfig = $this->container->getParameter('bones_user');
 
         if (isset($bonesUserConfig['form_types'])) {
-            foreach($bonesUserConfig['form_types'] as $formName => $className) {
-                if ($request->request->has($formName)) {
-                    return $this->createForm(new $className());
+            foreach($bonesUserConfig['form_types'] as $formName => $className ) {
+                if ( class_exists($className) ) {
+                    if ($request->request->has($className::NAME)) {
+                        return $this->createForm(new $className());
+                    }
                 }
             }
         }

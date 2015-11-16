@@ -30,6 +30,6 @@ class RegistrationSuccessListener implements EventSubscriberInterface
         $userType = $form->get('type')->getData();
 
         $user->addRole($userType);
-        $user->save();
+
     }
 }
