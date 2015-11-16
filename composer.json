@@ -17,10 +17,7 @@
         "sensio/distribution-bundle": "~4.0",
         "sensio/framework-extra-bundle": "^3.0.2",
         "incenteev/composer-parameter-handler": "~2.0",
-        "propel/propel-bundle": "1.4.*",
         "friendsofsymfony/user-bundle": "~2.0@dev",
-        "willdurand/propel-typehintable-behavior": "^1.0",
-        "symfony/propel1-bridge": "^2.6",
         "ircmaxell/password-compat": "^1.0"
     },
     "require-dev": {
