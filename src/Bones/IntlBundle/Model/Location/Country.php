@@ -8,11 +8,6 @@ namespace Bones\IntlBundle\Model\Location;
 class Country
 {
     /**
-     * @var integer
-     */
-    private $id;
-
-    /**
      * @var string
      */
     private $code;
@@ -23,32 +18,23 @@ class Country
     private $name;
 
 
-    public function __construct($code, $name)
+    public function __construct($countryCode, $countryName)
     {
 
-        $this->code = $code;
-        $this->name = $name;
-    }
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
+        $this->code = $countryCode;
+        $this->name = $countryName;
     }
 
     /**
      * Set code
      *
-     * @param string $code
+     * @param string $countryCode
      *
      * @return Country
      */
-    public function setCode($code)
+    public function setCode($countryCode)
     {
-        $this->code = $code;
+        $this->code = $countryCode;
 
         return $this;
     }
