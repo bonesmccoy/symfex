@@ -1,0 +1,24 @@
+Bones\IntlBundle\Entity\Currency:
+    type: entity
+    table: null
+    repositoryClass: Bones\IntlBundle\Entity\CurrencyRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        code:
+            type: string
+            length: '3'
+        symbol:
+            type: string
+            length: '10'
+        name:
+            type: string
+            length: 255
+        format:
+            type: string
+            length: '20'
+    lifecycleCallbacks: {  }

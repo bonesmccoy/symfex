@@ -1,0 +1,21 @@
+Bones\IntlBundle\Entity\State:
+    type: entity
+    table: null
+    repositoryClass: Bones\IntlBundle\Entity\StateRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        code:
+            type: string
+            length: '2'
+        name:
+            type: string
+            length: 255
+        countryCode:
+            type: string
+            length: '2'
+    lifecycleCallbacks: {  }

@@ -1,0 +1,3 @@
+bones_intl_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: BonesIntlBundle:Default:index }
