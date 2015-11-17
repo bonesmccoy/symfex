@@ -23,6 +23,12 @@ class Country
     private $name;
 
 
+    public function __construct($code, $name)
+    {
+
+        $this->code = $code;
+        $this->name = $name;
+    }
     /**
      * Get id
      *
