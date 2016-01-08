@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new Bones\UserBundle\BonesUserBundle(),
             new App\AppBundle\AppAppBundle(),
             new App\LayoutBundle\AppLayoutBundle(),
+            new Bones\IntlBundle\BonesIntlBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
