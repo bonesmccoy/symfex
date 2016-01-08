@@ -75,8 +75,7 @@
             "dev-master": "2.7-dev"
         },
         "installer-paths": {
-            "./frontend/": ["bonesmccoy/addi-ffa-frontend"],
-            "./culo/" : ["bonesmccoy/starfleet-crush-library"]
+            "./frontend/": ["bonesmccoy/addi-ffa-frontend"]
         }
     }
 }
