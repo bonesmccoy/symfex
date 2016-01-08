@@ -6,6 +6,20 @@
     "autoload": {
         "psr-0": { "": "src/", "SymfonyStandard": "app/" }
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:bonesmccoy/bones-intl-bundle.git"
+        },
+        {
+            "type": "vcs",
+            "url": "git@github.com:bonesmccoy/starfleet-crush-library.git"
+        },
+        {
+            "type": "vcs",
+            "url": "git@bitbucket.org:bonesmccoy/addi-ffa-frontend.git"
+        }
+    ],
     "require": {
         "php": ">=5.3.9",
         "symfony/symfony": "2.7.*",
@@ -18,7 +32,13 @@
         "sensio/framework-extra-bundle": "^3.0.2",
         "incenteev/composer-parameter-handler": "~2.0",
         "friendsofsymfony/user-bundle": "~2.0@dev",
-        "ircmaxell/password-compat": "^1.0"
+        "ircmaxell/password-compat": "^1.0",
+        "symfony/intl": "^2.7",
+        "mnsami/composer-custom-directory-installer": "1.0.*",
+		"bonesmccoy/bones-intl-bundle" : "dev-master",
+        "bonesmccoy/starfleet-crush-library" : "dev-master",
+        "doctrine/doctrine-migrations-bundle": "^1.0",
+		"bonesmccoy/addi-ffa-frontend" : "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"
@@ -53,6 +73,10 @@
         },
         "branch-alias": {
             "dev-master": "2.7-dev"
+        },
+        "installer-paths": {
+            "./frontend/": ["bonesmccoy/addi-ffa-frontend"],
+            "./culo/" : ["bonesmccoy/starfleet-crush-library"]
         }
     }
 }
