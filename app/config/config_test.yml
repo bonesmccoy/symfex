@@ -14,3 +14,14 @@ web_profiler:
 
 swiftmailer:
     disable_delivery: true
+
+
+doctrine:
+    dbal:
+        driver:   pdo_mysql
+        host:     127.0.0.1
+        port:     ~
+        dbname:   symfex_test
+        user:     root
+        password: admin
+        charset:  UTF8
