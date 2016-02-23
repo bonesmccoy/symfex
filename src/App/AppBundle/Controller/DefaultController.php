@@ -18,23 +18,4 @@ class DefaultController extends Controller
         ));
     }
 
-    public function createAction()
-    {
-        $article = new Article();
-        $article->setTitle("TITLE");
-        $article->setCountry("CA");
-        $article->setFieldWithLongDescription(substr(md5(time()), 0, rand(5, 20)));
-        $article->save();
-    }
-
-
-    public function showAction()
-    {
-        foreach(ArticleQuery::create()->find() as $article) {
-            var_dump($article->getCountry());
-            var_dump($article->getFieldWithLongDescription());
-            var_dump($article);
-        }
-
-    }
 }
