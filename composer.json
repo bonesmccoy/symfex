@@ -20,7 +20,10 @@
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "ircmaxell/password-compat": "^1.0",
         "doctrine/mongodb-odm": "~1.0",
-        "doctrine/mongodb-odm-bundle": "~3.0"
+        "doctrine/mongodb-odm-bundle": "~3.0",
+        "doctrine/migrations" : "1.2.*",
+        "doctrine/doctrine-migrations-bundle": "^1.0"
+
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",
@@ -45,10 +48,7 @@
         ]
     },
     "config": {
-        "bin-dir": "bin",
-        "platform": {
-            "php": "5.3.9"
-        }
+        "bin-dir": "bin"
     },
     "extra": {
         "symfony-app-dir": "app",
