@@ -16,10 +16,12 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new Doctrine\Bundle\MongoDBBundle\DoctrineMongoDBBundle(),
             new Bones\CoreBundle\BonesCoreBundle(),
             new Bones\UserBundle\BonesUserBundle(),
             new App\AppBundle\AppAppBundle(),
             new App\LayoutBundle\AppLayoutBundle(),
+            new Bones\StoreBundle\BonesStoreBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

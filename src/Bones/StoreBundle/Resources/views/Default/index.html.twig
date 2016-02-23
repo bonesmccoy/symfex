@@ -1,0 +1,15 @@
+{% extends 'AppLayoutBundle::layout.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-sm-12">
+            <a href="{{ url('bones_store_add') }}" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> add</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            {{ dump(productList) }}
+        </div>
+    </div>
+
+{% endblock %}

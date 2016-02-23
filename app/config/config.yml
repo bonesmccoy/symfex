@@ -1,6 +1,7 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
+    - { resource: "@BonesStoreBundle/Resources/config/services.yml" }
 
 framework:
     #esi:             ~
@@ -44,6 +45,16 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
 
+doctrine_mongodb:
+    connections:
+        default:
+            server: mongodb://localhost:27017
+            options: {}
+    default_database: test_database
+    document_managers:
+        default:
+            auto_mapping: true
+            
 # Swiftmailer Configuration
 #swiftmailer:
 #    transport: "%mailer_transport%"

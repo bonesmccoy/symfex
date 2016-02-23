@@ -1,0 +1,9 @@
+bones_store_homepage:
+    path:     /
+    defaults: { _controller: BonesStoreBundle:Default:index }
+
+
+bones_store_add:
+    path:     /add
+    defaults: { _controller: BonesStoreBundle:Default:addProduct }
+

@@ -1,3 +1,7 @@
+bones_store:
+    resource: "@BonesStoreBundle/Resources/config/routing.yml"
+    prefix:   /store
+
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
     prefix: /user
