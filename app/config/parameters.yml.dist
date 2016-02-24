@@ -28,3 +28,7 @@ parameters:
             - Bones\UserBundle\Form\Registration\SellerRegistrationType
             - Bones\UserBundle\Form\Registration\BuyerRegistrationType
 
+    google_app_id: ''
+    google_app_secret: ''
+    facebook_app_id: ''
+    facebook_app_secret: ''

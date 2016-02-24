@@ -13,3 +13,7 @@ services:
         class: Bones\UserBundle\Listeners\RegistrationSuccessListener
         tags:
             - { name: kernel.event_subscriber }
+
+    bones.service.user.provider:
+        class: Bones\UserBundle\Security\Core\User\UserProvider
+        arguments: [@fos_user.user_manager, {facebook: facebook_id, google: google_id} ]

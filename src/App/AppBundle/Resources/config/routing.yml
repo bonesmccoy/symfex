@@ -2,6 +2,10 @@ app_default:
     path:     /
     defaults: { _controller: AppAppBundle:Default:index}
 
+app_secured_index:
+    path: /secured
+    defaults: { _controller: AppAppBundle:Secured:index}
+
 register_buyer:
     path:     /account/buyer
     defaults: { _controller: AppAppBundle:Registration:registerBuyer }

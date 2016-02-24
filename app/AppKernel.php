@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new Doctrine\Bundle\MongoDBBundle\DoctrineMongoDBBundle(),
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
+            new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
             new Bones\CoreBundle\BonesCoreBundle(),
             new Bones\UserBundle\BonesUserBundle(),
             new App\AppBundle\AppAppBundle(),

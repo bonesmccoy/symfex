@@ -23,7 +23,8 @@
         "doctrine/mongodb-odm-bundle": "~3.0",
         "doctrine/migrations" : "1.2.*",
         "doctrine/data-fixtures" : "*",
-        "doctrine/doctrine-migrations-bundle": "^1.0"
+        "doctrine/doctrine-migrations-bundle": "^1.0",
+        "hwi/oauth-bundle": "^0.4.0"
 
     },
     "require-dev": {
