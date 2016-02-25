@@ -18,10 +18,14 @@ swiftmailer:
 
 doctrine:
     dbal:
-        driver:   pdo_mysql
-        host:     127.0.0.1
-        port:     ~
-        dbname:   symfex_test
-        user:     root
-        password: admin
-        charset:  UTF8
+        #driver:   pdo_mysql
+        #host:     127.0.0.1
+        #port:     ~
+        #dbname:   symfex_test
+        #user:     root
+        #password: admin
+        #charset:  UTF8
+
+        driver:   pdo_sqlite
+        #memory: true
+        path: %kernel.cache_dir%/test.db
