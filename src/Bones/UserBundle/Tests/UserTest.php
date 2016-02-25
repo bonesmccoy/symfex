@@ -6,26 +6,56 @@ namespace Bones\UserBundle\Tests;
 
 use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\EntityManager;
+use Hautelook\AliceBundle\Alice\DataFixtures\Fixtures\Loader;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
-
 
 class UserTest extends KernelTestCase
 {
 
     /** @var  EntityManager */
-    protected $em;
+    private static $em;
+
+    private static $fixtures;
+
+    public static function setUpBeforeClass()
+    {
+
+        self::bootKernel();
+
+        /**
+         * @var Loader $fixtureLoader;
+         */
+        $fixtureLoader = static::$kernel->getContainer()->get('hautelook_alice.alice.fixtures.loader');
+        static::$fixtures = $fixtureLoader->load(__DIR__ . '/../DataFixtures/ORM/user.yml');
+
+        /** @var EntityManager $em */
+        static::$em = static::$kernel->getContainer()->get("doctrine")->getManager();
+
+        foreach(static::$fixtures as $fixture) {
+            static::$em->persist($fixture);
+        }
+
+        static::$em->flush();
+    }
+
+    public static function tearDownAfterClass()
+    {
+        foreach(static::$fixtures as $fixture) {
+            static::$em->remove($fixture);
+        }
+
+        static::$em->flush();
+    }
 
     public function setUp()
     {
-        self::bootKernel();
-
-        $this->em = static::$kernel->getContainer()->get("doctrine")->getManager();
-        $this->em->getConnection()->beginTransaction();
+        static::$em = static::$kernel->getContainer()->get("doctrine")->getManager();
+        static::$em->getConnection()->beginTransaction();
     }
 
     public function tearDown()
     {
-        $this->em->getConnection()->rollBack();
+        static::$em->getConnection()->rollBack();
     }
 
     public function testUsersLoadedInDB()
@@ -49,10 +79,10 @@ class UserTest extends KernelTestCase
         $totalFacebookUsers = count($facebookUsers);
 
         foreach($facebookUsers as $facebookUser) {
-            $this->em->remove($facebookUser);
+            static::$em->remove($facebookUser);
         }
 
-        $this->em->flush();
+        static::$em->flush();
 
         $users = $this->getUserRepository()->findAll();
 
@@ -76,7 +106,9 @@ class UserTest extends KernelTestCase
      */
     private function getUserRepository()
     {
-        return $this->em->getRepository('BonesUserBundle:User');
+        return static::$em->getRepository('BonesUserBundle:User');
     }
+
+
 
 }
