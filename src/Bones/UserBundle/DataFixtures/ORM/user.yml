@@ -1,17 +1,41 @@
 Bones\UserBundle\Entity\User:
-    seller_{1..5}:
-          username (unique): <userName()>
-          email (unique): <email()>
-          password: <password()>
-          roles: ['ROLE_SELLER']
 
-    buyer_{1..5}:
-          username (unique): <userName()>
-          email (unique): <email()>
-          password: <password()>
-          roles: [ 'ROLE_BUYER' ]
+    user_base (template):
+        username (unique): <userName()>
+        email (unique): <email()>
+        password: <password()>
+        facebook_id:
+        facebook_access_token:
+        google_id:
+        google_access_token:
 
+    user_facebook (template, extends user_base):
+        facebook_id: <ean8()>
+        facebook_access_token: <sha1()>
 
+    user_google (template, extends user_base):
+        google_id: <ean8()>
+        google_access_token: <sha1()>
+
+    seller_base (template):
+        username (unique): seller.<userName()>
+        roles: ['ROLE_SELLER']
+
+    buyer_base (template):
+        username (unique): buyer.<userName()>
+        roles: [ 'ROLE_BUYER' ]
+
+    seller_{1..4} (extends user_base, extends seller_base):
+
+    seller_f_{1..4} (extends user_facebook, extends seller_base):
+
+    seller_g_{1..4} (extends user_google, extends seller_base):
+
+    buyer_{1..4} (extends user_base, extends buyer_base):
+
+    buyer_f_{1..4} (extends user_facebook, extends buyer_base):
+
+    buyer_g_{1..4} (extends user_google, extends buyer_base):
 
 
 
