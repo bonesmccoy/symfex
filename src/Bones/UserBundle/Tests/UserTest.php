@@ -5,6 +5,7 @@ namespace Bones\UserBundle\Tests;
 
 
 use Doctrine\Common\Collections\Criteria;
+use Doctrine\Common\DataFixtures\Purger\ORMPurger;
 use Doctrine\ORM\EntityManager;
 use Hautelook\AliceBundle\Alice\DataFixtures\Fixtures\Loader;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
@@ -40,11 +41,9 @@ class UserTest extends KernelTestCase
 
     public static function tearDownAfterClass()
     {
-        foreach(static::$fixtures as $fixture) {
-            static::$em->remove($fixture);
-        }
-
-        static::$em->flush();
+        $purger = new ORMPurger(static::$em);
+        $purger->setPurgeMode(ORMPurger::PURGE_MODE_TRUNCATE);
+        $purger->purge();
     }
 
     public function setUp()
