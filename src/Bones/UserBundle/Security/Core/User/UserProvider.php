@@ -55,10 +55,13 @@ class UserProvider extends BaseClass
             $user = $this->userManager->createUser();
             $this->linkUserToOAuthAccount($response, $user);
 
-            //I have set all requested data with the user's username
-            //modify here with relevant data
             $user->setUsername($response->getUsername());
-            $user->setEmail($response->getEmail());
+            if ($response->getEmail() == null) {
+                $email = $response->getUsername() . "@ddd.com";
+            } else {
+                $email = $response->getEmail();
+            }
+            $user->setEmail($email);
             $user->setPassword($username);
             $user->setEnabled(true);
 
