@@ -1,0 +1,19 @@
+services:
+    bones.form.registration.buyer:
+        class: Bones\UserBundle\Form\Registration\BuyerRegistrationType
+        tags:
+            - { name: form.type, alias: bones_user_registration_buyer }
+
+    bones.form.registration.seller:
+        class: Bones\UserBundle\Form\Registration\SellerRegistrationType
+        tags:
+            - { name: form.type, alias: bones_user_registration_seller }
+
+    bones.form.listener.registration_success:
+        class: Bones\UserBundle\Listeners\RegistrationSuccessListener
+        tags:
+            - { name: kernel.event_subscriber }
+
+    bones.service.user.provider:
+        class: Bones\UserBundle\Security\Core\User\UserProvider
+        arguments: [@fos_user.user_manager, {facebook: facebook_id, google: google_id} ]

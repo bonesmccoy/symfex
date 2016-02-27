@@ -30,24 +30,25 @@ class MetaColumnsBehavior extends Behavior {
 public function __call(\$name, \$params)
 {
     //get
-    \$get_reg = \'/^get([A-Za-z0-9]+)Meta/\';
+    \$get_reg = '/^get([A-Za-z0-9]+)Meta/';
     \$matches = array();
     if (preg_match(\$get_reg, \$name, \$matches)) {
         \$key = \$matches[1] ;
-        \$key = \\Bones\\CoreBundle\\Utility\\Inflector::camelCaseToUnderscore(\$key);
-        \$meta = unserialize(\$this->getMetaColumns());
-        return @\$meta[\$key];
+        \$key = strtolower(preg_replace( '/([A-Z])/', '_$1', lcfirst( \$key )));
+        \$meta = json_decode(\$this->getMetaColumns());
+        return isset(\$meta[\$key]) ? \$meta[\$key] : null;
     }
 
     //set
-    \$set_reg = \'/^set([A-Za-z0-9]+)Meta/\';
+    \$set_reg = '/^set([A-Za-z0-9]+)Meta/';
     \$matches = array();
     if (preg_match(\$set_reg, \$name, \$matches)) {
         if (empty(\$params)) throw new PropelException("params must valid, if setter");
-        \$key = \\Bones\\CoreBundle\\Utility\\Inflector::camelCaseToUnderscore(\$key);
-        \$meta = unserialize(\$this->getMetaColumns());
+        \$key = \$matches[1] ;
+        \$key = strtolower(preg_replace( '/([A-Z])/', '_$1', lcfirst( \$key )));
+        \$meta = json_decode(\$this->getMetaColumns());
         \$meta[\$key] = \$params[0];
-        \$this->setMetaColumns(serialize(\$meta));
+        \$this->setMetaColumns(json_encode(\$meta));
         return \$this;
     }
     parent:__call(\$name, \$params);

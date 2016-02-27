@@ -22,3 +22,13 @@ parameters:
     debug_toolbar:          true
     debug_redirects:        false
     use_assetic_controller: true
+
+    bones_user:
+        form_types:
+            - Bones\UserBundle\Form\Registration\SellerRegistrationType
+            - Bones\UserBundle\Form\Registration\BuyerRegistrationType
+
+    google_app_id: ''
+    google_app_secret: ''
+    facebook_app_id: ''
+    facebook_app_secret: ''

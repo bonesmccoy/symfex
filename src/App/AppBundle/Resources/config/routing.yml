@@ -1,8 +1,15 @@
+app_default:
+    path:     /
+    defaults: { _controller: AppAppBundle:Default:index}
 
-login_index:
-    path:     /login
-    defaults: { _controller: AppAppBundle:Login:index }
+app_secured_index:
+    path: /secured
+    defaults: { _controller: AppAppBundle:Secured:index}
 
-login_process:
-    path:     /process
-    defaults: { _controller: AppAppBundle:Login:process }
+register_buyer:
+    path:     /account/buyer
+    defaults: { _controller: AppAppBundle:Registration:registerBuyer }
+
+register_seller:
+    path:     /account/seller
+    defaults: { _controller: AppAppBundle:Registration:registerSeller }

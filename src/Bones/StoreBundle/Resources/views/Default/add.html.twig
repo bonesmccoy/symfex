@@ -1,0 +1,14 @@
+{% extends 'AppLayoutBundle::layout.html.twig' %}
+{% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}
+
+
+{% block body %}
+    <div class="row">
+        <div class="col-sm-5">
+            <form method="post">
+                {{ form_widget(form) }}
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
