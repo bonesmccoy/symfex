@@ -1,9 +1,10 @@
 <?php
 
-
 namespace Bones\UserBundle\Entity;
 
-
+/**
+ * Class UserTotal
+ */
 class UserTotal
 {
 
@@ -17,14 +18,18 @@ class UserTotal
      */
     private function __construct($total, $roles)
     {
-
         $this->total = $total;
         $this->roles = $roles;
     }
 
-    public static function factory($array)
+    /**
+     * @param array $data
+     *
+     * @return UserTotal
+     */
+    public static function factory($data)
     {
-        return new UserTotal($array['total'], $array['roles']);
+        return new UserTotal($data['total'], $data['roles']);
     }
 
     /**
@@ -42,6 +47,4 @@ class UserTotal
     {
         return $this->roles;
     }
-    
-    
 }

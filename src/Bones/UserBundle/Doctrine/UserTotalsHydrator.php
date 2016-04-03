@@ -6,9 +6,11 @@ namespace Bones\UserBundle\Doctrine;
 
 use Bones\UserBundle\Entity\UserTotal;
 use Doctrine\ORM\Internal\Hydration\AbstractHydrator;
-use PDO;
 
-class UserTotalsHydrator  extends AbstractHydrator
+/**
+ * Class UserTotalsHydrator
+ */
+class UserTotalsHydrator extends AbstractHydrator
 {
 
     /**
@@ -18,9 +20,8 @@ class UserTotalsHydrator  extends AbstractHydrator
      */
     protected function hydrateAllData()
     {
-        $result = array();
-        $cache  = array();
-        foreach($this->_stmt->fetchAll() as $row) {
+        $result = [];
+        foreach ($this->_stmt->fetchAll() as $row) {
             $this->hydrateRowData($row, $result);
         }
 
@@ -35,7 +36,7 @@ class UserTotalsHydrator  extends AbstractHydrator
     {
         $row['total'] = $row['sclr_0'];
         $row['roles'] = unserialize($row['roles_1']);
-       $result[] = UserTotal::factory($row);
+        $result[] = UserTotal::factory($row);
     }
 
 }

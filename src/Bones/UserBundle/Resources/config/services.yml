@@ -17,3 +17,10 @@ services:
     bones.service.user.provider:
         class: Bones\UserBundle\Security\Core\User\UserProvider
         arguments: [@fos_user.user_manager, {facebook: facebook_id, google: google_id} ]
+
+    #custom repository
+    bones.repository.user_custom:
+        class: Bones\UserBundle\Repository\UserCustomRepository
+        factory: ['@doctrine.orm.default_entity_manager', getRepository]
+        arguments:
+            - Bones\UserBundle\Entity\User
