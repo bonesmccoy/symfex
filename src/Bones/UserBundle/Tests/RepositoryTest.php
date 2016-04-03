@@ -25,18 +25,9 @@ class RepositoryTest extends KernelTestCase
     {
         static::$em->getConnection()->rollBack();
     }
-
-    /**
-     * @return \Doctrine\ORM\EntityRepository
-     */
-    private function getUserRepository()
-    {
-        return static::$em->getRepository('BonesUserBundle:User');
-    }
-
+    
     public function testCustomQuery()
     {
-
         $connection = static::$em->getConnection();
         $statement = $connection->prepare("SELECT count(*), roles FROM fos_user GROUP BY roles;");
         $statement->execute();

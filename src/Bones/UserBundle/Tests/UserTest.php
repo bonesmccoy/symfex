@@ -20,32 +20,14 @@ class UserTest extends KernelTestCase
 
     public static function setUpBeforeClass()
     {
-
         self::bootKernel();
-
-        /**
-         * @var Loader $fixtureLoader;
-         */
-        $fixtureLoader = static::$kernel->getContainer()->get('hautelook_alice.alice.fixtures.loader');
-        static::$fixtures = $fixtureLoader->load(__DIR__ . '/../DataFixtures/ORM/user.yml');
-
         /** @var EntityManager $em */
         static::$em = static::$kernel->getContainer()->get("doctrine")->getManager();
-
-        foreach(static::$fixtures as $fixture) {
-            static::$em->persist($fixture);
-        }
-
-        static::$em->flush();
     }
 
-    public static function tearDownAfterClass()
-    {
-        $purger = new ORMPurger(static::$em);
-        $purger->setPurgeMode(ORMPurger::PURGE_MODE_TRUNCATE);
-        $purger->purge();
-    }
-
+    /**
+     * {@inheritdoc}
+     */
     public function setUp()
     {
         static::$em = static::$kernel->getContainer()->get("doctrine")->getManager();
