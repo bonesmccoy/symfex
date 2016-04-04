@@ -1,0 +1,4 @@
+services:
+#    discography.example:
+#        class: DiscographyBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

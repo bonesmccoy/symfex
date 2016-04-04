@@ -1,0 +1,14 @@
+\DiscographyBundle\Entity\Musician:
+
+    musician{1..50}:
+        firstName: <firstName()>
+        lastName: <lastName()>
+        instrument: <randomElement(['guitar','bass','drum','voice'])>
+
+\DiscographyBundle\Entity\Band:
+
+    band{1..20}:
+        name (unique): <word()>
+        members: 5x @musician*
+
+

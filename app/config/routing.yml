@@ -1,3 +1,7 @@
+discography:
+    resource: "@DiscographyBundle/Resources/config/routing.yml"
+    prefix:   /discography
+
 #FosUserBundle Routes
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"

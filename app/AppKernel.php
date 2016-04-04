@@ -24,6 +24,7 @@ class AppKernel extends Kernel
             new App\AppBundle\AppAppBundle(),
             new App\LayoutBundle\AppLayoutBundle(),
             new Bones\StoreBundle\BonesStoreBundle(),
+            new DiscographyBundle\DiscographyBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

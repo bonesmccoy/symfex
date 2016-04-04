@@ -2,6 +2,7 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: "@BonesStoreBundle/Resources/config/services.yml" }
+    - { resource: "@DiscographyBundle/Resources/config/services.yml" }
 
 framework:
     #esi:             ~
