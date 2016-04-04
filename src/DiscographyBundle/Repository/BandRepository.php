@@ -4,6 +4,7 @@ namespace DiscographyBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Mapping\ClassMetadata;
+use Doctrine\ORM\Query\Expr\Join;
 
 /**
  * BandRepository
@@ -18,9 +19,17 @@ class BandRepository extends EntityRepository
      */
     public function findAllWithMembers()
     {
-        $qb = $this->createQueryBuilder('band');
+//        $qb = $this->getEntityManager()->createQueryBuilder();
+//        $qb->select('b', 'm')
+//            ->from("DiscographyBundle:Band", 'b')
+//            ->join("DiscographyBundle:Musician", 'm', Join::WITH);
+        $qb = $this
+            ->getEntityManager()
+            ->createQuery('select b from DiscographyBundle\Entity\Band b');
 
-        return $qb->getQuery()->setFetchMode('DiscographyBundle::Musician', 'members', ClassMetadata::FETCH_EAGER)->getResult();
+        return $qb
+            ->setFetchMode('DiscographyBundle\Entity\Band', 'members', ClassMetadata::FETCH_EAGER)
+            ->execute();
 
     }
 }

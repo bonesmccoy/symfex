@@ -30,7 +30,10 @@ class BandController extends Controller
      */
     public function indexEagerAction()
     {
-        $bandList = $this->getDoctrine()->getRepository('DiscographyBundle:Band')->findAllWithMembers();
+        $bandList = $this
+            ->getDoctrine()
+            ->getRepository('DiscographyBundle:Band')
+            ->findAllWithMembers();
 
         return $this->render(
             'DiscographyBundle:Band:index.html.twig',

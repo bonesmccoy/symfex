@@ -1,9 +1,5 @@
-discography_homepage:
-    path:     /
-    defaults: { _controller: DiscographyBundle:Default:indexLazy }
-
 band:
-    path:     /band
+    path:     /band/lazy
     defaults: { _controller: DiscographyBundle:Band:indexLazy }
 
 band/eager:
