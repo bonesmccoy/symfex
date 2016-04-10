@@ -51,7 +51,12 @@ class BandController extends Controller
         $bandList = $this
             ->getDoctrine()
             ->getRepository('DiscographyBundle:Band')
-            ->findAllWithMembersAvid();
+            ->findAll();
+
+        $bandList = $this
+            ->getDoctrine()
+            ->getRepository('DiscographyBundle:Musician')
+            ->populateBandWithMembers($bandList);
 
         return $this->render(
             'DiscographyBundle:Band:index.html.twig',

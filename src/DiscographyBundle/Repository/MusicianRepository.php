@@ -1,6 +1,7 @@
 <?php
 
 namespace DiscographyBundle\Repository;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * MusicianRepository
@@ -10,4 +11,43 @@ namespace DiscographyBundle\Repository;
  */
 class MusicianRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * @param Band[]|ArrayCollection $bandList
+     *
+     * @return Band[]|ArrayCollection
+     * @throws \Doctrine\DBAL\DBALException
+     */
+    public function populateBandWithMembers(array $bandList)
+    {
+        foreach ($bandList as $band) {
+            $band->setMembers(new ArrayCollection());
+            $bandListWithIdASKey[$band->getId()] = $band;
+        }
+
+        $musicianListWithIdAsKey = [];
+        foreach ($this->findAll() as $musician) {
+            $musicianListWithIdAsKey[$musician->getId()] = $musician;
+        }
+        $stmt = $this
+            ->getEntityManager()
+            ->getConnection()
+            ->prepare(
+                sprintf(
+                    'SELECT bm.* FROM band_musicians bm WHERE bm.band_id IN (%s)',
+                    implode(',', array_keys($bandListWithIdASKey))
+                )
+            );
+        $stmt->execute();
+
+        $rel = $stmt->fetchAll();
+        foreach ($rel as $relation) {
+            $bandId = $relation['band_id'];
+            $musicianId = $relation['musician_id'];
+            if (isset($musicianListWithIdAsKey[$musicianId]) && isset($bandListWithIdASKey[$bandId])) {
+                $bandListWithIdASKey[$bandId]->addMember($musicianListWithIdAsKey[$musicianId]);
+            }
+        }
+
+        return $bandList;
+    }
 }

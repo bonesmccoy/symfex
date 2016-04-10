@@ -19,6 +19,7 @@ use Doctrine\ORM\QueryBuilder;
  */
 class BandRepository extends EntityRepository
 {
+
     /**
      * @return array
      */
@@ -50,45 +51,5 @@ class BandRepository extends EntityRepository
         return $qb->getQuery()
             ->setFetchMode('DiscographyBundle\Entity\Band', 'members', ClassMetadata::FETCH_EAGER)
             ->execute();
-    }
-
-    /**
-     * @return mixed
-     * @throws \Doctrine\DBAL\DBALException
-     */
-    public function findAllWithMembersAvid()
-    {
-        $bandList = $this->findAll();
-        $bandListWithIdASKey = [];
-        /** @var Band $band */
-        foreach ($bandList as $band) {
-            $band->setMembers(new ArrayCollection());
-            $bandListWithIdASKey[$band->getId()] = $band;
-        }
-
-        $musicianListWithIdAsKey = [];
-        foreach ($this
-            ->getEntityManager()
-            ->getRepository('DiscographyBundle:Musician')
-            ->findAll() as $musician) {
-            $musicianListWithIdAsKey[$musician->getId()] = $musician;
-        }
-        $stmt = $this
-            ->getEntityManager()
-            ->getConnection()
-            ->prepare('SELECT bm.* FROM band_musicians bm');
-
-        $stmt->execute();
-
-        $rel = $stmt->fetchAll();
-        foreach ($rel as $relation) {
-            $bandId = $relation['band_id'];
-            $musicianId = $relation['musician_id'];
-            if (isset($musicianListWithIdAsKey[$musicianId]) && isset($bandListWithIdASKey[$bandId])) {
-                $bandListWithIdASKey[$bandId]->addMember($musicianListWithIdAsKey[$musicianId]);
-            }
-        }
-
-        return array_values($bandListWithIdASKey);
     }
 }
