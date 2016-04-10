@@ -1,6 +1,10 @@
 {% extends 'AppLayoutBundle::layout.html.twig' %}
 
 {% block body %}
+    <div class="row">
+        <a class="btn btn-success" href="{{ path('band') }}">Lazy Loading</a>
+        <a class="btn btn-warning" href="{{ path('band/eager') }}">Eager Loading</a>
+    </div>
     {% for band in bandList %}
         <div class="row">
             <div class="col-lg-12">

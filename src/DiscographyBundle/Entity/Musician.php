@@ -42,7 +42,6 @@ class Musician
      */
     private $instrument;
 
-
     /**
      * Get id
      *

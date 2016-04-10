@@ -30,7 +30,7 @@ class Band
     private $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Musician",)
+     * @ORM\ManyToMany(targetEntity="Musician")
      * @ORM\JoinTable(name="band_musicians",
      *     joinColumns={@ORM\JoinColumn(name="band_id", referencedColumnName="id")},
      *     inverseJoinColumns={@ORM\JoinColumn(name="musician_id", referencedColumnName="id", unique=true)}

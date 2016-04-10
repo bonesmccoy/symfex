@@ -3,12 +3,27 @@
     musician{1..50}:
         firstName: <firstName()>
         lastName: <lastName()>
-        instrument: <randomElement(['guitar','bass','drum','voice'])>
+        instrument: <randomElement(['guitar','bass','drum','vocal'])>
 
 \DiscographyBundle\Entity\Band:
 
-    band{1..20}:
+    band{1..10}:
         name (unique): <word()>
-        members: 5x @musician*
+        members: 5x @musician1*
 
+    band{11..20}:
+        name (unique): <word()>
+        members: 5x @musician2*
+
+    band{21..30}:
+        name (unique): <word()>
+        members: 5x @musician3*
+
+    band{31..40}:
+        name (unique): <word()>
+        members: 5x @musician4*
+
+    band{41..50}:
+        name (unique): <word()>
+        members: 5x @musician5*
 
