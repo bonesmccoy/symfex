@@ -43,4 +43,22 @@ class BandController extends Controller
         );
     }
 
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function indexAvidAction()
+    {
+        $bandList = $this
+            ->getDoctrine()
+            ->getRepository('DiscographyBundle:Band')
+            ->findAllWithMembersAvid();
+
+        return $this->render(
+            'DiscographyBundle:Band:index.html.twig',
+            [
+                'bandList' => $bandList,
+            ]
+        );
+    }
+
 }

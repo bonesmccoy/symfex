@@ -5,3 +5,8 @@ band:
 band/eager:
     path:     /band/eager
     defaults: { _controller: DiscographyBundle:Band:indexEager }
+
+
+band/avid:
+    path:     /band/avid
+    defaults: { _controller: DiscographyBundle:Band:indexAvid }
